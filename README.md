@@ -1,42 +1,44 @@
-Leaderboard API
+# Leaderboard API
 
 A RESTful leaderboard service built with Go, Redis, and Prometheus.
-Supports score submission, rank retrieval, pagination, and user removal with performance monitoring.
+Supports score submission, rank retrieval, pagination, and user removal
+with performance monitoring.
 
-Features
+## Features
 
-Submit user scores
+-   Submit user scores
+-   Get paginated leaderboard
+-   Fetch user rank and score
+-   Remove user from leaderboard
+-   Prometheus metrics integration
+-   Redis Sorted Sets for efficient ranking
 
-Get paginated leaderboard
+## Tech Stack
 
-Fetch user rank and score
+-   Go
+-   Redis
+-   Chi Router
+-   Prometheus
 
-Remove user from leaderboard
+## API Endpoints
 
-Prometheus metrics integration
+    POST   /v1/leaderboards/{boardId}/scores
+    GET    /v1/leaderboards/{boardId}
+    GET    /v1/leaderboards/{boardId}/users/{userId}
+    DELETE /v1/leaderboards/{boardId}/users/{userId}
+    GET    /metrics
 
-Redis Sorted Sets for efficient ranking
+## Run Locally
 
-Tech Stack
-
-Go
-
-Redis
-
-Chi Router
-
-Prometheus
-
-API Endpoints
-POST   /v1/leaderboards/{boardId}/scores
-GET    /v1/leaderboards/{boardId}
-GET    /v1/leaderboards/{boardId}/users/{userId}
-DELETE /v1/leaderboards/{boardId}/users/{userId}
-GET    /metrics
-Run Locally
+``` bash
 go run main.go
+```
 
-Ensure Redis is running on localhost:6379 or configure via environment variables.
+Ensure Redis is running on localhost:6379 or configure via environment
+variables.
 
-Run Tests
+## Run Tests
+
+``` bash
 go test ./... -v
+```
